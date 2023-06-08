@@ -1,0 +1,54 @@
+.menu {
+    position: sticky;
+    top: 116px;
+    font-size: 14px;
+    padding-left: 40px;
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__item {
+        position: relative;
+        margin: 0;
+        margin: 5px 0;
+        padding: 10px 0;
+        color: rgba(0,0,0,.59);
+    }
+
+    &__icon {
+        position: absolute;
+        display: block;
+        top: 10px;
+        left: -20px
+    }
+}
+
+.active {
+    color: #475DE8;
+}
+
+.active::before {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 5px;
+    left: -36px;
+    top: 0;
+    background-color: #475DE8;
+}
+
+.active::after {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    left: -36px;
+    top: 0;
+    background-color: rgba(#475DE8, .2);
+    border-radius: 5px;
+}
