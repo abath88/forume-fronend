@@ -3,16 +3,17 @@ import Vote from '../Vote/Vote';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage } from '@fortawesome/free-regular-svg-icons';
 import avatar from '../../avatar-default.gif';
+import { Link } from 'react-router-dom';
 
-const Post = ({ title, children, author, date, commentAmount }) => {
+const Post = ({ title, children, author, date, commentAmount, id }) => {
   return(
     <>
       <Vote />
       <div className={styles.post}>
-        <h1 className={styles.post__title}>{ title }</h1>
+        <Link to={`post/${id}`}><h1 className={styles.post__title}>{ title }</h1></Link>
         <p className={styles.post__text}>{children}</p>
-        <div class={styles.post__information}>
-          <div class={styles.post__generalInformation}>
+        <div className={styles.post__information}>
+          <div className={styles.post__generalInformation}>
             <div>
               <img src={avatar} alt="Avatar" className={styles.post__avatar} />
             </div>
