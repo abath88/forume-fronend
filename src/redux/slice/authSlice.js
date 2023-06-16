@@ -6,7 +6,6 @@ const backendURL = 'http://localhost:3001'
 const initialState = {
   loading: false,
   userInfo: {},
-  userToken: null,
   error: null,
   success: false,
 }
@@ -19,13 +18,14 @@ export const userLogin = createAsyncThunk(
         headers: {
           'Content-Type': 'application/json',
         },
-      }
+      };
       const { data } = await axios.post(
         `${backendURL}/api/signin`,
         { username, password },
         config
-      )
-      localStorage.setItem('Bearer', data.token)
+      );
+      localStorage.setItem('Bearer', data.token);
+      localStorage.setItem('UserID', data.userId);
       return data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -73,7 +73,6 @@ const authSlice = createSlice({
     [userLogin.fulfilled]: (state, { payload }) => {
       state.loading = false
       state.userInfo = payload
-      state.userToken = payload.userToken
     },
     [userLogin.rejected]: (state, { payload }) => {
       state.loading = false

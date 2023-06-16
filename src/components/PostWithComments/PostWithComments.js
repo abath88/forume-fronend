@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './PostWithComments.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -14,16 +14,27 @@ const PostWithComments = () => {
 
   const [showReply, setShowReply] = useState(false);
 
+  const isLoading = useSelector((state) => state.posts.isLoading)
+  const error = useSelector((state) => state.posts.error)
+
   useEffect(() => {
     dispatch(fetchOnePost({id}))
   }, [dispatch, id])
   const post = useSelector((state) => {return state.posts.post})
 
+  if (isLoading) {
+    return 'loading...'
+  }
+
+  if (error) {
+    return error
+  }
+
   return (
     <Panel>
       { post && 
       <>
-        <Vote />
+        <Vote element={post}/>
         <div className={styles.post}>
           <h1 className={styles.post__title}>{ post.title }</h1>
           <p className={styles.post__text}>{post.text}</p>
@@ -37,7 +48,7 @@ const PostWithComments = () => {
                 <div>
                   <img src={avatar} alt="Avatar" className={styles.comment__avatar} />
                 </div>
-                <Vote />
+                <Vote element={comment}/>
               </div>
               <div className={styles.comment__content}>
                 <p className={styles.comment__author}>{comment._creator.username}</p>

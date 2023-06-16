@@ -28,14 +28,7 @@ const Home = () => {
     <>
       {posts.map((post, key) => (
         <Panel key={key}>
-          <Post 
-            id={post._id}
-            title={post.title}
-            votes={34} 
-            author={post._creator.username} 
-            date={post.createdAt}
-            commentAmount={post._comments.length}
-          >
+          <Post post={post}>
             {post.text}
           </Post>
         </Panel>
