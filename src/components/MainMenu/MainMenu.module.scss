@@ -22,15 +22,19 @@
         position: absolute;
         display: block;
         top: 10px;
-        left: -20px
+        left: -20px;
+
+        .active &{
+            color: #475DE8;
+        }
     }
 }
 
-.active {
+.active a{
     color: #475DE8;
 }
 
-.active::before {
+li.active::before {
     content: "";
     position: absolute;
     display: block;
@@ -41,7 +45,7 @@
     background-color: #475DE8;
 }
 
-.active::after {
+li.active::after {
     content: "";
     position: absolute;
     display: block;

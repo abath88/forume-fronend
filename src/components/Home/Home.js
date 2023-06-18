@@ -16,7 +16,6 @@ const Home = () => {
   const error = useSelector((state) => state.posts.error)
 
   if (isLoading) {
-    console.log(posts);
     return 'loading...'
   }
 

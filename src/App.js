@@ -29,6 +29,7 @@ function App() {
               <Route path="/signin" element={<SignIn />} />
               <Route path="/addpost" element={<AddPost />} />
               <Route path="/post/:id" element={<PostWithComments />} />
+              <Route path="/explore-topics" element={<Home />} />
               <Route path="*" element={<NoMatch />} />
             </Routes>
           </MainBar>

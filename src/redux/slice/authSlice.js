@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-const backendURL = 'http://localhost:3001'
+const backendURL = 'https://api.abath.pl'
 
 const initialState = {
   loading: false,

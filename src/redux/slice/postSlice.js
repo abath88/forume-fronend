@@ -8,7 +8,7 @@ const initialState = {
   error: null,
 }
 
-const backendURL = 'http://localhost:3001'
+const backendURL = 'https://api.abath.pl'
 
 export const fetchPosts = createAsyncThunk(
   'post/fetchPost',

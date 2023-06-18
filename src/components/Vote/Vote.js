@@ -39,13 +39,17 @@ const Vote = ({ element }) => {
 
   return (
     <div className={styles.vote}>
-     <button onClick={handleUpvote} style={{color: `${element.vote.positive.includes(userId) && 'green'}`}} className={styles.vote__button}>
-        <FontAwesomeIcon icon={faArrowUp} />
-      </button>
-      <div className={styles.vote__amount}>{element.vote.positive.length - element.vote.negative.length}</div>
-      <button onClick={handleDownvote}  style={{color: `${element.vote.negative.includes(userId) && 'red'}`}} className={styles.vote__button}>
-        <FontAwesomeIcon icon={faArrowDown} />
-      </button>
+    { element.hasOwnProperty('vote') &&
+      <>
+        <button onClick={handleUpvote} style={{color: `${element.vote.positive.includes(userId) && 'green'}`}} className={styles.vote__button}>
+          <FontAwesomeIcon icon={faArrowUp} />
+        </button>
+        <div className={styles.vote__amount}>{element.vote.positive.length - element.vote.negative.length}</div>
+        <button onClick={handleDownvote}  style={{color: `${element.vote.negative.includes(userId) && 'red'}`}} className={styles.vote__button}>
+          <FontAwesomeIcon icon={faArrowDown} />
+        </button>
+      </>
+    }
     </div>
   )
 };
